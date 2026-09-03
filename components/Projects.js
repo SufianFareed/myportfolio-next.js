@@ -16,7 +16,7 @@ export default function Projects() {
     <section className="work" id="work">
       <div className="section-inner">
         <div>
-          <p className="section-eyebrow">// 03 — work.tsx</p>
+          <p className="section-eyebrow">{"// 03 — work.tsx"}</p>
           <h2 className="section-title">Selected work.</h2>
         </div>
 

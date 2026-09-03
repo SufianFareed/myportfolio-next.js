@@ -5,7 +5,7 @@ export default function About() {
     <section className="about" id="about">
       <div className="section-inner about__grid">
         <ScrollReveal>
-          <p className="section-eyebrow">// 01 — about</p>
+          <p className="section-eyebrow">{"// 01 — about"}</p>
           <h2 className="section-title">
             Building products that hold up in production.
           </h2>

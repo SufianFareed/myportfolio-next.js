@@ -6,7 +6,7 @@ export default function Skills() {
     <section className="skills" id="skills">
       <div className="section-inner">
         <ScrollReveal>
-          <p className="section-eyebrow">// 02 — skills.json</p>
+          <p className="section-eyebrow">{"// 02 — skills.json"}</p>
           <h2 className="section-title">Tools I reach for.</h2>
         </ScrollReveal>
 

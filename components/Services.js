@@ -6,7 +6,7 @@ export default function Services() {
     <section className="services" id="services">
       <div className="section-inner">
         <ScrollReveal>
-          <p className="section-eyebrow">// 05 — services.ts</p>
+          <p className="section-eyebrow">{"// 05 — services.ts"}</p>
           <h2 className="section-title">How I can help.</h2>
         </ScrollReveal>
 

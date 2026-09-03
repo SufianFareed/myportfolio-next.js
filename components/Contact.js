@@ -85,7 +85,7 @@ export default function Contact() {
     <section className="contact" id="contact">
       <div className="section-inner contact__grid">
         <ScrollReveal>
-          <p className="section-eyebrow">// 06 — contact.tsx</p>
+          <p className="section-eyebrow">{"// 06 — contact.tsx"}</p>
           <h2 className="section-title">Let&apos;s build something.</h2>
           <p className="contact__lede">
             Have a WordPress, Shopify, or Next.js project in mind? Send a

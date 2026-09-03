@@ -6,7 +6,7 @@ export default function Experience() {
     <section className="experience" id="experience">
       <div className="section-inner">
         <ScrollReveal>
-          <p className="section-eyebrow">// 04 — log.md</p>
+          <p className="section-eyebrow">{"// 04 — log.md"}</p>
           <h2 className="section-title">Commit history.</h2>
         </ScrollReveal>
 
