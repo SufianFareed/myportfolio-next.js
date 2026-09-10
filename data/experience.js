@@ -1,9 +1,15 @@
 export const experience = [
   {
-    date: "Ongoing",
-    title: "Freelance WordPress, Shopify & Next.js Developer",
+    date: "7+ years",
+    title: "Full-Stack Web Developer, Freelance",
     description:
-      "Delivering custom WordPress, Shopify, and Next.js projects for local and regional clients, end to end from proposal to launch.",
+      "Working with clients in Pakistan and internationally on WordPress, Shopify, and Next.js projects, handling everything from planning through launch.",
+  },
+  {
+    date: "Ongoing",
+    title: "WordPress & Elementor Builds",
+    description:
+      "Converting design mockups into fully editable Elementor sites, including Chemplink, a plumbing services website built for lead conversion.",
   },
   {
     date: "Recent",
@@ -12,15 +18,9 @@ export const experience = [
       "Negotiated pricing and produced a formal proposal for an OLX-style classifieds marketplace, covering Android, iOS, and admin panel packages.",
   },
   {
-    date: "Recent",
-    title: "Chemplink — Plumbing Services Website",
-    description:
-      "Converted a design mockup into a working, Elementor-editable WordPress website for a plumbing services business.",
-  },
-  {
     date: "Ongoing",
     title: "Content Creator — Web Development",
     description:
-      "Documenting builds and workflows for other developers through a YouTube channel and social content.",
+      "Sharing builds and workflows with other developers through a YouTube channel and social content.",
   },
 ];

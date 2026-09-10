@@ -3,13 +3,14 @@
 import { useEffect, useState } from "react";
 
 const NAV_ITEMS = [
-  { id: "hero", label: "hero.tsx" },
-  { id: "about", label: "about.tsx" },
-  { id: "skills", label: "skills.json" },
-  { id: "work", label: "work.tsx" },
-  { id: "experience", label: "log.md" },
-  { id: "services", label: "services.ts" },
-  { id: "contact", label: "contact.tsx" },
+  { id: "hero", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "work", label: "Work" },
+  { id: "experience", label: "Experience" },
+  { id: "services", label: "Services" },
+  { id: "process", label: "Process" },
+  { id: "contact", label: "Contact" },
 ];
 
 export default function Navbar() {

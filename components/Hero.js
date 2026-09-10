@@ -1,3 +1,4 @@
+import { siteConfig, getWhatsAppUrl } from "@/lib/site";
 import ScrollReveal from "./ScrollReveal";
 import TypedStatus from "./TypedStatus";
 
@@ -17,23 +18,30 @@ export default function Hero() {
             WordPress, Shopify &amp; Next.js Developer
           </p>
           <p className="hero__lede">
-            I design and build fast, reliable websites and web apps — custom
-            WordPress and Elementor builds, Shopify storefronts, and modern
-            Next.js applications — with the right tool picked for what the
-            project actually needs.
+            I help businesses and startups get fast, reliable websites built
+            on WordPress, Shopify, and Next.js. With {siteConfig.yearsExperience} years
+            of experience and clients in Pakistan and abroad, I handle the
+            whole process myself, from planning to launch.
           </p>
           <div className="hero__actions">
-            <a href="#work" className="btn btn--primary">
-              View My Work
+            <a
+              href={getWhatsAppUrl(
+                "Hi Sufian, I visited your portfolio and would like to discuss a project with you."
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--primary"
+            >
+              Discuss Your Project
             </a>
-            <a href="#contact" className="btn btn--ghost">
-              Let&apos;s Work Together
+            <a href="#work" className="btn btn--ghost">
+              View My Work
             </a>
           </div>
           <div className="hero__stats">
             <div className="hero__stat">
-              <span className="hero__stat-num">6+</span>
-              <span className="hero__stat-label">shipped products</span>
+              <span className="hero__stat-num">{siteConfig.yearsExperience}</span>
+              <span className="hero__stat-label">years experience</span>
             </div>
             <div className="hero__stat">
               <span className="hero__stat-num">3</span>
@@ -65,8 +73,8 @@ export default function Hero() {
                   <span className="tk-str">&quot;WordPress&quot;</span>,{" "}
                   <span className="tk-str">&quot;Shopify&quot;</span>,{" "}
                   <span className="tk-str">&quot;Next.js&quot;</span>],
-                  {"\n"}  <span className="tk-prop">basedIn</span>:{" "}
-                  <span className="tk-str">&quot;Pakistan&quot;</span>,
+                  {"\n"}  <span className="tk-prop">experience</span>:{" "}
+                  <span className="tk-str">&quot;7+ years&quot;</span>,
                   {"\n"}  <span className="tk-prop">status</span>:{" "}
                   <TypedStatus />
                   {"\n"}

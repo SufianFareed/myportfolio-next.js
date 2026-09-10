@@ -59,10 +59,25 @@ export const metadata = {
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  jobTitle: "Full-Stack Web Developer",
+  description: siteConfig.description,
+  knowsAbout: ["WordPress", "Shopify", "Next.js", "React", "Web Development"],
+  sameAs: [siteConfig.socials.github, siteConfig.socials.linkedin, siteConfig.socials.youtube],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <div className="bg-grid" aria-hidden="true"></div>
         <div className="bg-glow bg-glow--one" aria-hidden="true"></div>
         <div className="bg-glow bg-glow--two" aria-hidden="true"></div>

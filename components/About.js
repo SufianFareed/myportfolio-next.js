@@ -1,3 +1,4 @@
+import { siteConfig } from "@/lib/site";
 import ScrollReveal from "./ScrollReveal";
 
 export default function About() {
@@ -5,32 +6,31 @@ export default function About() {
     <section className="about" id="about">
       <div className="section-inner about__grid">
         <ScrollReveal>
-          <p className="section-eyebrow">{"// 01 — about"}</p>
+          <p className="section-eyebrow">{"// about"}</p>
           <h2 className="section-title">
-            Building products that hold up in production.
+            Building websites that hold up in production.
           </h2>
         </ScrollReveal>
 
         <ScrollReveal className="about__content">
           <p>
-            I&apos;m a full-stack web developer based in Pakistan, working
-            with clients across the region to turn ideas into real, working
-            products. My core focus sits in three areas: WordPress
-            development, Shopify development, and modern Next.js / custom
-            web development — whichever fits the project best.
+            I&apos;m a full-stack web developer based in Pakistan with{" "}
+            {siteConfig.yearsExperience} years of experience, working with
+            clients here and internationally. My focus sits in three areas:
+            WordPress development, Shopify development, and Next.js or
+            custom web development, whichever fits the project best.
           </p>
           <p>
-            Alongside that, I work with React.js, Node.js, Nest.js,
-            Angular.js, WooCommerce, Elementor, and PHP when a project calls
-            for it. Recent work has ranged from education platforms and
-            service-business websites to a full classifieds marketplace app
-            with Android, iOS, and admin panel components.
+            I also work with React, Node.js, Nest.js, Angular.js, PHP, and
+            other CMS platforms when a project calls for it, but WordPress,
+            Shopify, and Next.js are where most of my recent work has been.
+            I handle projects end to end, from the first conversation about
+            requirements through build, testing, and launch.
           </p>
           <p>
-            I also document a lot of this in public — breaking down builds
-            and workflows for other developers on YouTube and social media,
-            because the best way to get better at something is to explain it
-            clearly.
+            Alongside client work, I document builds and workflows for
+            other developers on YouTube and social media, because explaining
+            something clearly is a good way to understand it better yourself.
           </p>
 
           <div className="about__whoami">
@@ -51,7 +51,7 @@ export default function About() {
                 <span className="prompt">$</span> location
               </p>
               <p className="whoami__out">
-                Pakistan — working with local &amp; regional clients
+                Pakistan — working with clients locally and internationally
               </p>
             </div>
           </div>

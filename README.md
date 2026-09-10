@@ -1,151 +1,99 @@
 # Sufian Fareed — Portfolio (Next.js)
 
-A production-ready Next.js rebuild of the original static portfolio, keeping
-the same dark, code-editor-inspired visual design while adding real
-functionality: a filterable project grid, a working contact form, a
-WhatsApp button, and full SEO metadata.
+A conversion-focused rebuild of the portfolio, keeping the original dark
+developer-inspired visual identity while sharpening the content,
+navigation, and calls to action around WordPress, Shopify, and Next.js
+work.
 
-## What changed from the static version
+## What changed in this pass
 
-- Converted the static HTML/CSS/JS site into a Next.js 15 app using the
-  App Router.
-- Split the page into reusable components (`Navbar`, `Hero`, `About`,
-  `Skills`, `Projects`, `ProjectCard`, `Experience`, `Services`, `Contact`,
-  `Footer`, `WhatsAppButton`) instead of one long HTML file.
-- Moved content into data files (`data/projects.js`, `data/services.js`,
-  `data/skills.js`, `data/experience.js`) so you can edit content without
-  touching component code.
-- Repositioned your professional focus around **WordPress, Shopify, and
-  Next.js / custom web development** as the three primary specialties —
-  these get the highlighted "accent" styling in the Skills section, while
-  React, Node.js, Nest.js, Angular.js, PHP, etc. are shown as supporting
-  skills.
-- Added technology filter tabs (All / WordPress / Shopify / Next.js &
-  Custom) to the projects section, backed by a `category` field on each
-  project in `data/projects.js` — adding a new project is just adding one
-  object to that file.
-- Built a real contact form: client-side validation, a loading state,
-  duplicate-submission prevention, and success/error messaging, wired to a
-  secure API route (`app/api/contact/route.js`) that sends email through
-  [Resend](https://resend.com). The API key never touches the browser.
-- Added a floating WhatsApp button (bottom-right) with your number and a
-  pre-filled message, opening in a new tab.
-- Added full SEO: page metadata, Open Graph and Twitter Card tags, a
-  canonical URL, `robots.txt`, and `sitemap.xml`, all generated through the
-  Next.js Metadata API and driven by `lib/site.js` so you can update them
-  in one place once you have a domain.
-- Switched fonts to `next/font` (Space Grotesk, Inter, JetBrains Mono) so
-  they're self-hosted and don't block rendering.
-- Used `next/image` for project thumbnails for automatic optimization and
-  lazy loading.
-- Server Components are used by default throughout; `"use client"` is only
-  added where interactivity is needed (Navbar, Projects filter, Contact
-  form, WhatsApp button, the hero's typing effect, and the scroll-reveal
-  wrapper).
+- Rewrote the copy across Hero, About, Services, and Experience in a
+  plainer, more natural tone, positioned consistently around "WordPress,
+  Shopify and Next.js Developer."
+- Simplified navigation labels (Home, About, Skills, Work, Experience,
+  Services, Process, Contact) instead of fake file extensions, while
+  keeping the terminal-tab visual style.
+- Hero now leads with a clear "Discuss Your Project" WhatsApp CTA and a
+  secondary "View My Work" CTA, plus a trust line (7+ years, clients in
+  Pakistan and abroad).
+- Reorganized Skills into two tiers: Primary Expertise (WordPress,
+  Shopify, React, Next.js, Elementor, WooCommerce, Shopify Liquid) and
+  Supporting Skills (everything else), so the primary focus reads clearly
+  instead of one flat list.
+- Rewrote Services around client value instead of a tech list, with a
+  contextual WhatsApp CTA per card (e.g. the Shopify card opens WhatsApp
+  with "I need help with a Shopify project" pre-filled).
+- Rewrote Experience/timeline using your real background (7+ years,
+  Chemplink, the marketplace app proposal, content creation) without
+  inventing companies or clients.
+- Added a new "How I Work" section with a simple 4-step process.
+- WhatsApp is now the primary conversion channel throughout: a floating
+  button with a subtle pulse animation, a prominent WhatsApp card in the
+  Contact section, and contextual CTAs on Services and Project cards.
+- Updated the Contact form's Project Type options to match your real
+  service categories (WordPress Website, Shopify Store, Next.js / React
+  Project, Other CMS Project, Website Redesign, Maintenance /
+  Optimization, Other).
+- Added Person structured data (JSON-LD) in the layout for richer SEO,
+  alongside the existing Open Graph/Twitter metadata, sitemap, and robots.
+- Project cards now show a badge (e.g. "Client Project"), hide the Live
+  Demo/GitHub buttons when no real URL exists yet, and show a "Need
+  something similar?" WhatsApp CTA instead — no placeholder or fake
+  links anywhere.
 
-Nothing structural like authentication, a database, or a dashboard was
-added — this stays a straightforward, fast portfolio site.
+## Projects section — left to you
+
+As discussed, the Projects data (`data/projects.js`) currently holds only
+your two confirmed real projects (Eduker, Chemplink), both without a live
+URL since none was provided — the card automatically falls back to a
+"Need something similar?" WhatsApp button in that case. Add your own
+projects to that file whenever you're ready; each one needs a `category`
+of `"wordpress"`, `"shopify"`, `"nextjs"`, or `"other-cms"`, plus an
+honest `badge` ("Client Project", "Personal Project", or "Concept
+Project"). The filter tabs and grid pick up new entries automatically.
 
 ## Project structure
 
 ```
 app/
-  layout.js          → root layout, fonts, global SEO metadata
-  page.js             → assembles all sections
-  globals.css         → all design tokens and styles
-  sitemap.js          → generates /sitemap.xml
-  robots.js           → generates /robots.txt
-  api/
-    contact/
-      route.js         → POST handler that sends email via Resend
+  layout.js          → fonts, SEO metadata, Person JSON-LD
+  page.js
+  globals.css
+  sitemap.js
+  robots.js
+  api/contact/route.js
 
 components/
-  Navbar.js
-  Hero.js
-  TypedStatus.js       → typing animation used inside Hero
-  About.js
-  Skills.js
-  Projects.js          → filter tabs + grid (client component)
-  ProjectCard.js
-  Experience.js
-  Services.js
-  Contact.js            → form + validation + API call
-  Footer.js
-  WhatsAppButton.js
-  ScrollReveal.js       → shared scroll-in-view animation wrapper
+  Navbar.js, Hero.js, TypedStatus.js, About.js, Skills.js,
+  Projects.js, ProjectCard.js, Experience.js, Services.js,
+  HowIWork.js, Contact.js, Footer.js, WhatsAppButton.js,
+  ScrollReveal.js
 
 data/
-  projects.js          → all project content + categories
-  services.js
-  skills.js
-  experience.js
+  projects.js, services.js, skills.js, experience.js, process.js
 
 lib/
-  site.js              → site name, URL, keywords, WhatsApp number, socials
-
-public/
-  images/              → put your own project screenshots here if you'd
-                          rather not use the Unsplash placeholders
+  site.js   → site config + getWhatsAppUrl() helper for contextual CTAs
 ```
 
 ## Environment variables
 
-Copy `.env.example` to `.env.local` and fill in:
+Same four as before — see `.env.example`:
 
-| Variable               | Description                                                        |
-|-------------------------|---------------------------------------------------------------------|
-| `RESEND_API_KEY`        | Your API key from resend.com                                        |
-| `CONTACT_EMAIL`         | The inbox that should receive contact form messages                |
-| `RESEND_FROM_EMAIL`     | The "from" address — use `onboarding@resend.dev` until you verify your own domain on Resend |
-| `NEXT_PUBLIC_SITE_URL`  | Your site's public URL, used in metadata, sitemap.xml, and robots.txt |
-
-The contact form will return a clear error instead of crashing if these
-aren't set yet.
+- `RESEND_API_KEY`
+- `CONTACT_EMAIL`
+- `RESEND_FROM_EMAIL`
+- `NEXT_PUBLIC_SITE_URL`
 
 ## Running locally
 
 ```bash
 npm install
-cp .env.example .env.local   # then fill in the values above
+cp .env.example .env.local   # fill in your values
 npm run dev
 ```
 
-Open http://localhost:3000.
+## Deploying
 
-To build and run the production build locally:
-
-```bash
-npm run build
-npm run start
-```
-
-## Deploying to Vercel
-
-1. Push this project to a GitHub repository.
-2. Go to [vercel.com](https://vercel.com), click **New Project**, and
-   import the repo.
-3. In the project's **Settings → Environment Variables**, add the four
-   variables listed above (use your real domain for
-   `NEXT_PUBLIC_SITE_URL` once you have one — Vercel gives you a
-   `.vercel.app` URL by default, which works fine too).
-4. Deploy. Vercel auto-detects Next.js, so no extra build configuration is
-   needed.
-5. After deploying, visit `/sitemap.xml` and `/robots.txt` on your live
-   URL to confirm they're generated correctly.
-
-## Customizing content
-
-- **Projects**: edit `data/projects.js`. Each project needs a `category`
-  of `"wordpress"`, `"shopify"`, or `"nextjs"` — the filter tabs pick it up
-  automatically.
-- **Services**: edit `data/services.js`.
-- **Skills**: edit `data/skills.js`. Set `primary: true` on a skill to give
-  it the highlighted accent style.
-- **Experience / timeline**: edit `data/experience.js`.
-- **Site name, URL, keywords, WhatsApp number, social links**: edit
-  `lib/site.js`.
-- **Colors, spacing, fonts**: all design tokens are CSS variables at the
-  top of `app/globals.css` under `:root`.
-- **Images**: replace the Unsplash URLs in `data/projects.js` with your own
-  image paths (e.g. `/images/eduker.jpg`) after adding files to
-  `public/images/`.
+Push to GitHub and import into Vercel as before. Add the four environment
+variables in Vercel's Settings → Environment Variables, then deploy.

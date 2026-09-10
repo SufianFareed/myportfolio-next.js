@@ -11,7 +11,6 @@ export async function POST(request) {
     const subject = (body.subject || "General Inquiry").trim();
     const message = (body.message || "").trim();
 
-    // Server-side validation — never trust the client alone.
     if (!name || !email || !message) {
       return NextResponse.json(
         { success: false, error: "Name, email, and message are required." },

@@ -1,44 +1,34 @@
-// Skills are grouped by category so the Skills component can render them
-// in order of professional focus: CMS & Ecommerce first, then modern
-// JavaScript, then backend/additional tooling.
-//
-// `primary: true` marks the core skills — these get the highlighted
-// "accent" pill style so they visually stand out from the rest.
+// Two clear tiers: primary expertise gets the highlighted accent style,
+// supporting skills are grouped separately so the section reads as
+// organized rather than a flat list of every technology ever touched.
 
-export const skillCategories = [
+export const skillGroups = [
   {
-    title: "CMS & Ecommerce",
+    title: "Primary Expertise",
+    highlight: true,
     skills: [
-      { name: "WordPress", primary: true },
-      { name: "Shopify", primary: true },
-      { name: "Elementor", primary: true },
-      { name: "WooCommerce", primary: true },
-      { name: "Shopify Liquid", primary: false },
-      { name: "Custom CMS Development", primary: false },
+      "WordPress",
+      "Shopify",
+      "React",
+      "Next.js",
+      "Elementor",
+      "WooCommerce",
+      "Shopify Liquid",
     ],
   },
   {
-    title: "Modern Web Development",
+    title: "Supporting Skills",
+    highlight: false,
     skills: [
-      { name: "Next.js", primary: true },
-      { name: "React.js", primary: true },
-      { name: "JavaScript", primary: false },
-    ],
-  },
-  {
-    title: "Backend",
-    skills: [
-      { name: "Node.js", primary: false },
-      { name: "Nest.js", primary: false },
-      { name: "PHP", primary: false },
-    ],
-  },
-  {
-    title: "Additional",
-    skills: [
-      { name: "Angular.js", primary: false },
-      { name: "HTML", primary: false },
-      { name: "CSS", primary: false },
+      "Other CMS Platforms",
+      "Node.js",
+      "Nest.js",
+      "Angular.js",
+      "PHP",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Custom CMS Development",
     ],
   },
 ];

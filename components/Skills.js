@@ -1,4 +1,4 @@
-import { skillCategories } from "@/data/skills";
+import { skillGroups } from "@/data/skills";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Skills() {
@@ -6,21 +6,21 @@ export default function Skills() {
     <section className="skills" id="skills">
       <div className="section-inner">
         <ScrollReveal>
-          <p className="section-eyebrow">{"// 02 — skills.json"}</p>
+          <p className="section-eyebrow">{"// skills"}</p>
           <h2 className="section-title">Tools I reach for.</h2>
         </ScrollReveal>
 
         <ScrollReveal className="skills__groups">
-          {skillCategories.map((category) => (
-            <div className="skills__group" key={category.title}>
-              <h3 className="skills__group-title">{category.title}</h3>
+          {skillGroups.map((group) => (
+            <div className="skills__group" key={group.title}>
+              <h3 className="skills__group-title">{group.title}</h3>
               <div className="skills__pills">
-                {category.skills.map((skill) => (
+                {group.skills.map((skill) => (
                   <span
-                    key={skill.name}
-                    className={`pill ${skill.primary ? "pill--accent" : ""}`}
+                    key={skill}
+                    className={`pill ${group.highlight ? "pill--accent" : ""}`}
                   >
-                    {skill.name}
+                    {skill}
                   </span>
                 ))}
               </div>
