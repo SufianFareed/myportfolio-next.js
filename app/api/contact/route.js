@@ -12,29 +12,17 @@ export async function POST(request) {
     const message = (body.message || "").trim();
 
     if (!name || !email || !message) {
-      return NextResponse.json(
-        { success: false, error: "Name, email, and message are required." },
-        { status: 400 }
-      );
+      return NextResponse.json({ success: false, error: "Name, email, and message are required." }, { status: 400 });
     }
-
     if (!isValidEmail(email)) {
-      return NextResponse.json(
-        { success: false, error: "Please provide a valid email address." },
-        { status: 400 }
-      );
+      return NextResponse.json({ success: false, error: "Please provide a valid email address." }, { status: 400 });
     }
-
     if (!process.env.RESEND_API_KEY || !process.env.CONTACT_EMAIL) {
       console.error("Missing RESEND_API_KEY or CONTACT_EMAIL environment variable.");
-      return NextResponse.json(
-        { success: false, error: "Email service is not configured yet." },
-        { status: 500 }
-      );
+      return NextResponse.json({ success: false, error: "Email service is not configured yet." }, { status: 500 });
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-
     const { error } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
       to: process.env.CONTACT_EMAIL,
@@ -45,18 +33,12 @@ export async function POST(request) {
 
     if (error) {
       console.error("Resend error:", error);
-      return NextResponse.json(
-        { success: false, error: "Failed to send message. Please try again." },
-        { status: 502 }
-      );
+      return NextResponse.json({ success: false, error: "Failed to send message. Please try again." }, { status: 502 });
     }
 
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Contact API error:", err);
-    return NextResponse.json(
-      { success: false, error: "Unexpected error. Please try again." },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: "Unexpected error. Please try again." }, { status: 500 });
   }
 }

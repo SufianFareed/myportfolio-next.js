@@ -1,35 +1,41 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
-  { id: "hero", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "skills", label: "Skills" },
-  { id: "work", label: "Work" },
-  { id: "experience", label: "Experience" },
-  { id: "services", label: "Services" },
-  { id: "process", label: "Process" },
-  { id: "contact", label: "Contact" },
+  { id: "hero", label: "Home", href: "/#hero" },
+  { id: "about", label: "About", href: "/#about" },
+  { id: "skills", label: "Skills", href: "/#skills" },
+  { id: "work", label: "Work", href: "/#work" },
+  { id: "experience", label: "Experience", href: "/#experience" },
+  { id: "services", label: "Services", href: "/#services" },
+  { id: "process", label: "Process", href: "/#process" },
+  { id: "blog", label: "Blog", href: "/blog", route: true },
+  { id: "tools", label: "Tools", href: "/tools", route: true },
+  { id: "contact", label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [activeId, setActiveId] = useState("hero");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const sections = NAV_ITEMS.map((item) =>
-      document.getElementById(item.id)
-    ).filter(Boolean);
+    if (!isHome) return;
+
+    const sections = NAV_ITEMS.filter((item) => !item.route)
+      .map((item) => document.getElementById(item.id))
+      .filter(Boolean);
 
     if (!("IntersectionObserver" in window) || sections.length === 0) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
       { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
@@ -37,34 +43,33 @@ export default function Navbar() {
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-  }, []);
+  }, [isHome]);
+
+  const isItemActive = (item) => {
+    if (item.route) return pathname === item.href || pathname.startsWith(`${item.href}/`);
+    return isHome && activeId === item.id;
+  };
 
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <header className="tabbar" id="tabbar">
       <div className="tabbar__inner">
-        <a href="#hero" className="tabbar__logo">
+        <Link href="/#hero" className="tabbar__logo">
           <span className="tabbar__logo-bracket">&lt;</span>SF
           <span className="tabbar__logo-bracket">/&gt;</span>
-        </a>
+        </Link>
 
         <nav className="tabbar__tabs">
           {NAV_ITEMS.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className={`tab ${activeId === item.id ? "is-active" : ""}`}
-            >
+            <Link key={item.id} href={item.href} className={`tab ${isItemActive(item) ? "is-active" : ""}`}>
               <span className="tab__dot"></span>
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a href="#contact" className="tabbar__cta">
-          Let&apos;s talk
-        </a>
+        <Link href="/#contact" className="tabbar__cta">Let&apos;s talk</Link>
 
         <button
           type="button"
@@ -73,22 +78,15 @@ export default function Navbar() {
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((open) => !open)}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
       </div>
 
       <nav className={`mobile-menu ${isMenuOpen ? "is-open" : ""}`}>
         {NAV_ITEMS.map((item) => (
-          <a
-            key={item.id}
-            href={`#${item.id}`}
-            className="mobile-menu__link"
-            onClick={closeMenu}
-          >
+          <Link key={item.id} href={item.href} className="mobile-menu__link" onClick={closeMenu}>
             {item.label}
-          </a>
+          </Link>
         ))}
       </nav>
     </header>

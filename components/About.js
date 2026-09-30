@@ -7,9 +7,7 @@ export default function About() {
       <div className="section-inner about__grid">
         <ScrollReveal>
           <p className="section-eyebrow">{"// about"}</p>
-          <h2 className="section-title">
-            Building websites that hold up in production.
-          </h2>
+          <h2 className="section-title">Building websites that hold up in production.</h2>
         </ScrollReveal>
 
         <ScrollReveal className="about__content">
@@ -41,18 +39,10 @@ export default function About() {
               <span className="terminal__title">~/about</span>
             </div>
             <div className="whoami__body">
-              <p>
-                <span className="prompt">$</span> whoami
-              </p>
-              <p className="whoami__out">
-                WordPress &amp; Shopify developer · Next.js / custom web apps
-              </p>
-              <p>
-                <span className="prompt">$</span> location
-              </p>
-              <p className="whoami__out">
-                Pakistan — working with clients locally and internationally
-              </p>
+              <p><span className="prompt">$</span> whoami</p>
+              <p className="whoami__out">WordPress &amp; Shopify developer · Next.js / custom web apps</p>
+              <p><span className="prompt">$</span> location</p>
+              <p className="whoami__out">Pakistan — working with clients locally and internationally</p>
             </div>
           </div>
         </ScrollReveal>

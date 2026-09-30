@@ -17,12 +17,7 @@ export default function Services() {
               <div className="service-card__icon">{service.icon}</div>
               <h3 className="service-card__title">{service.title}</h3>
               <p className="service-card__desc">{service.description}</p>
-              <a
-                href={getWhatsAppUrl(service.whatsappMessage)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="service-card__cta"
-              >
+              <a href={getWhatsAppUrl(service.whatsappMessage)} target="_blank" rel="noopener noreferrer" className="service-card__cta">
                 Let&apos;s talk about your project →
               </a>
             </div>

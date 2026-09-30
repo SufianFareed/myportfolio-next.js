@@ -16,12 +16,7 @@ export default function Skills() {
               <h3 className="skills__group-title">{group.title}</h3>
               <div className="skills__pills">
                 {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className={`pill ${group.highlight ? "pill--accent" : ""}`}
-                  >
-                    {skill}
-                  </span>
+                  <span key={skill} className={`pill ${group.highlight ? "pill--accent" : ""}`}>{skill}</span>
                 ))}
               </div>
             </div>

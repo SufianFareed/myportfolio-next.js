@@ -1,5 +1,4 @@
 "use client";
-
 import { useMemo, useState } from "react";
 import { projects, projectCategories } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
@@ -22,16 +21,9 @@ export default function Projects() {
 
         <div className="work__filters" role="tablist" aria-label="Filter projects by technology">
           {projectCategories.map((category) => (
-            <button
-              key={category.id}
-              type="button"
-              role="tab"
-              aria-selected={activeCategory === category.id}
-              className={`filter-btn ${
-                activeCategory === category.id ? "is-active" : ""
-              }`}
-              onClick={() => setActiveCategory(category.id)}
-            >
+            <button key={category.id} type="button" role="tab" aria-selected={activeCategory === category.id}
+              className={`filter-btn ${activeCategory === category.id ? "is-active" : ""}`}
+              onClick={() => setActiveCategory(category.id)}>
               {category.label}
             </button>
           ))}
@@ -39,14 +31,10 @@ export default function Projects() {
 
         {filteredProjects.length > 0 ? (
           <div className="work__grid">
-            {filteredProjects.map((project) => (
-              <ProjectCard project={project} key={project.id} />
-            ))}
+            {filteredProjects.map((project) => <ProjectCard project={project} key={project.id} />)}
           </div>
         ) : (
-          <p className="work__empty">
-            More projects in this category are on the way — check back soon.
-          </p>
+          <p className="work__empty">More projects in this category are on the way — check back soon.</p>
         )}
       </div>
     </section>

@@ -1,5 +1,8 @@
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { siteConfig } from "@/lib/site";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -72,7 +75,10 @@ const personJsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+    >
       <body>
         <script
           type="application/ld+json"
@@ -81,7 +87,10 @@ export default function RootLayout({ children }) {
         <div className="bg-grid" aria-hidden="true"></div>
         <div className="bg-glow bg-glow--one" aria-hidden="true"></div>
         <div className="bg-glow bg-glow--two" aria-hidden="true"></div>
+        <Navbar />
         {children}
+        <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
