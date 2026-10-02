@@ -73,12 +73,27 @@ const personJsonLd = {
   sameAs: [siteConfig.socials.github, siteConfig.socials.linkedin, siteConfig.socials.youtube],
 };
 
+// Runs before React hydrates so a returning visitor who chose light mode
+// never sees a flash of the default dark theme first.
+const themeInitScript = `
+  (function() {
+    try {
+      if (localStorage.getItem('theme') === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    } catch (e) {}
+  })();
+`;
+
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         <script
           type="application/ld+json"

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 const NAV_ITEMS = [
   { id: "hero", label: "Home", href: "/#hero" },
@@ -69,6 +70,7 @@ export default function Navbar() {
           ))}
         </nav>
 
+        <ThemeToggle />
         <Link href="/#contact" className="tabbar__cta">Let&apos;s talk</Link>
 
         <button
