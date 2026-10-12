@@ -81,3 +81,19 @@ npm run dev
 
 Push to GitHub, import into Vercel, add the five environment variables
 above in Settings → Environment Variables, then deploy.
+
+## Invoice generator (`/tools/invoice-generator`)
+
+A fully client-side invoice maker. Nothing is uploaded; everything is stored in the visitor's own browser.
+
+- **Editor:** business details and logo, client details, line items (qty, unit price, per-line discount), percentage and fixed discounts, tax, extra fees, amount paid, optional payment details, notes and terms.
+- **Calculations:** done in integer minor units (paisa/cents) so totals never drift. Subtotal - discounts + tax + fees = total; total - paid = balance due.
+- **Templates:** Modern Blue, Minimal B&W, Elegant, with an accent colour picker. Switching templates never loses data.
+- **PDF:** `jsPDF` + `jspdf-autotable` draw real, selectable text on A4 and paginate long invoices (table header repeats, totals stay together). It is loaded only when you click Download or Print.
+- **Actions:** save / load / edit / duplicate / delete, mark as paid, clear form, reset to sample data, copy summary, share by email or WhatsApp (summary text only, the PDF is not attached automatically).
+- **Dashboard:** counts and outstanding / collected amounts per currency. Drafts never count as revenue or outstanding.
+- **Storage keys (localStorage):** `sf-invoice:profile:v1`, `sf-invoice:draft:v1`, `sf-invoice:history:v1`.
+
+Code layout: `lib/invoice/*` (calculation, validation, storage, PDF, share) and `components/tools/invoice/*` (UI). Add a template by extending `TEMPLATES` in `lib/invoice/constants.js`, the header/table branch in `lib/invoice/pdf.js`, and the `.inv-paper--<id>` styles in `app/globals.css`.
+
+Known limits: PDF fonts are the built-in Latin set, so Urdu/Arabic/emoji text shows as `?` in the PDF (the editor warns you). Business details apply to all invoices; they are not snapshotted per invoice.

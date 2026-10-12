@@ -11,4 +11,13 @@ export const tools = [
     icon: "◎",
     status: "live",
   },
+  {
+    slug: "invoice-generator",
+    title: "Invoice Generator",
+    description:
+      "Create professional invoices with live preview, three templates, multiple currencies, saved history, and a clean A4 PDF download.",
+    category: "Business",
+    icon: "▤",
+    status: "live",
+  },
 ];
