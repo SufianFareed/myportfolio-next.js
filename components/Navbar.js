@@ -53,6 +53,24 @@ export default function Navbar() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Close the mobile menu on navigation, on Escape, and when the screen
+  // grows past the mobile breakpoint.
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return undefined;
+    const onKey = (e) => e.key === "Escape" && setIsMenuOpen(false);
+    const onResize = () => window.innerWidth > 1080 && setIsMenuOpen(false);
+    document.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onResize);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [isMenuOpen]);
+
   return (
     <header className="tabbar" id="tabbar">
       <div className="tabbar__inner">
@@ -76,20 +94,30 @@ export default function Navbar() {
         <button
           type="button"
           className={`tabbar__burger ${isMenuOpen ? "is-open" : ""}`}
-          aria-label="Open menu"
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
           onClick={() => setIsMenuOpen((open) => !open)}
         >
           <span></span><span></span><span></span>
         </button>
       </div>
 
-      <nav className={`mobile-menu ${isMenuOpen ? "is-open" : ""}`}>
+      <nav id="mobile-menu" className={`mobile-menu ${isMenuOpen ? "is-open" : ""}`} aria-label="Mobile">
         {NAV_ITEMS.map((item) => (
-          <Link key={item.id} href={item.href} className="mobile-menu__link" onClick={closeMenu}>
+          <Link
+            key={item.id}
+            href={item.href}
+            className={`mobile-menu__link ${isItemActive(item) ? "is-active" : ""}`}
+            onClick={closeMenu}
+            tabIndex={isMenuOpen ? 0 : -1}
+          >
             {item.label}
           </Link>
         ))}
+        <Link href="/#contact" className="mobile-menu__cta" onClick={closeMenu} tabIndex={isMenuOpen ? 0 : -1}>
+          Let&apos;s talk
+        </Link>
       </nav>
     </header>
   );
