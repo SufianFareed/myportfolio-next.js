@@ -20,4 +20,22 @@ export const tools = [
     icon: "▤",
     status: "live",
   },
+  {
+    slug: "json-formatter",
+    title: "JSON Formatter",
+    description:
+      "Format, beautify and minify JSON with 2-space, 4-space or tab indentation. Clear error messages, copy and download, all in your browser.",
+    category: "Developer",
+    icon: "{ }",
+    status: "live",
+  },
+  {
+    slug: "json-validator",
+    title: "JSON Validator",
+    description:
+      "Check JSON syntax and find the exact line and column of any error. Fast, private, and runs entirely in your browser.",
+    category: "Developer",
+    icon: "✓",
+    status: "live",
+  },
 ];
